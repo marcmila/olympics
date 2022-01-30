@@ -1,0 +1,41 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Olympics\Domain\Staff\Staff" table="staff" inheritance-type="JOINED">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+            <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1"/>
+        </id>
+
+        <field name="name" column="name" type="string" nullable="false" length="255"/>
+
+        <field name="lastName" column="last_name" type="string" nullable="false" length="255"/>
+
+        <field name="passport" column="passport" type="string" nullable="false" length="255"/>
+
+        <field name="created" column="created" type="datetime" nullable="false"/>
+
+        <field name="modified" column="modified" type="datetime" nullable="false"/>
+
+        <field name="deleted" column="deleted" type="boolean" nullable="false"/>
+
+        <discriminator-column name="type" type="string"/>
+
+        <discriminator-map>
+
+            <discriminator-mapping value="judge" class="Olympics\Domain\Staff\Judge"/>
+
+            <discriminator-mapping value="admin" class="Olympics\Domain\Staff\Admin"/>
+
+            <discriminator-mapping value="competitor" class="Olympics\Domain\Staff\Competitor"/>
+
+            <discriminator-mapping value="journalist" class="Olympics\Domain\Staff\Journalist"/>
+
+        </discriminator-map>
+
+    </entity>
+
+</doctrine-mapping>

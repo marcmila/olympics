@@ -1,0 +1,12 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Olympics\Domain\Staff\Admin" table="admin">
+
+        <field name="unsubscribedDate" column="unsubscribed_date" type="datetime" nullable="false"/>
+
+    </entity>
+
+</doctrine-mapping>

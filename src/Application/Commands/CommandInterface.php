@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Src\Application\Commands;
+namespace Olympics\Application\Commands;
 
 
 interface CommandInterface

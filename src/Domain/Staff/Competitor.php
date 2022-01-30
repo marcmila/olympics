@@ -1,6 +1,10 @@
 <?php
 
 
+namespace Olympics\Domain\Staff;
+
+use DateTime;
+
 class Competitor extends Staff
 {
     private $birthDate;
@@ -8,30 +12,23 @@ class Competitor extends Staff
 
     /**
      * Competitor constructor.
-     * @param int $id
      * @param string $name
      * @param string $lastName
      * @param string $passport
      * @param DateTime $birthDate
      * @param string $result
-     * @param DateTime $created
-     * @param DateTime $modified
-     * @param bool $deleted
+     * @throws \Exception
      */
     public function __construct(
-        int $id,
         string $name,
         string $lastName,
         string $passport,
         DateTime $birthDate,
-        string $result,
-        DateTime $created,
-        DateTime $modified,
-        bool $deleted
+        string $result
     ) {
         $this->birthDate = $birthDate;
         $this->result = $result;
-        parent::__construct($id, $name, $lastName, $passport, $created, $modified, $deleted);
+        parent::__construct($name, $lastName, $passport);
     }
 
     /**

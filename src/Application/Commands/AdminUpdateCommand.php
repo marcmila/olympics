@@ -6,12 +6,12 @@ namespace Olympics\Application\Commands;
 
 use DateTime;
 
-class AdminCreateCommand implements CommandInterface
+class AdminUpdateCommand implements CommandInterface
 {
+    private $id;
     private $name;
     private $lastName;
     private $passport;
-    private $staffType;
     private $unsubscribedDate;
     private $birthDate;
     private $result;
@@ -19,11 +19,11 @@ class AdminCreateCommand implements CommandInterface
     private $judgeId;
 
     /**
-     * AdminCreateCommand constructor.
-     * @param string $name
-     * @param string $lastName
-     * @param string $passport
-     * @param string $staffType
+     * AdminUpdateCommand constructor.
+     * @param int $id
+     * @param string|null $name
+     * @param string|null $lastName
+     * @param string|null $passport
      * @param DateTime|null $unsubscribedDate
      * @param DateTime|null $birthDate
      * @param string|null $result
@@ -31,20 +31,20 @@ class AdminCreateCommand implements CommandInterface
      * @param int|null $judgeId
      */
     public function __construct(
-        string $name,
-        string $lastName,
-        string $passport,
-        string $staffType,
+        int $id,
+        ?string $name,
+        ?string $lastName,
+        ?string $passport,
         ?DateTime $unsubscribedDate,
         ?DateTime $birthDate,
         ?string $result,
         ?string $companyName,
         ?int $judgeId
     ) {
+        $this->id = $id;
         $this->name = $name;
         $this->lastName = $lastName;
         $this->passport = $passport;
-        $this->staffType = $staffType;
         $this->unsubscribedDate = $unsubscribedDate;
         $this->birthDate = $birthDate;
         $this->result = $result;
@@ -53,67 +53,67 @@ class AdminCreateCommand implements CommandInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getName(): string
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     /**
-     * @param string $lastName
+     * @param string|null $lastName
      */
-    public function setLastName(string $lastName): void
+    public function setLastName(?string $lastName): void
     {
         $this->lastName = $lastName;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassport(): string
+    public function getPassport(): ?string
     {
         return $this->passport;
     }
 
     /**
-     * @param string $passport
+     * @param string|null $passport
      */
-    public function setPassport(string $passport): void
+    public function setPassport(?string $passport): void
     {
         $this->passport = $passport;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStaffType()
-    {
-        return $this->staffType;
-    }
-
-    /**
-     * @param mixed $staffType
-     */
-    public function setStaffType($staffType): void
-    {
-        $this->staffType = $staffType;
     }
 
     /**

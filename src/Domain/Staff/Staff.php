@@ -1,6 +1,10 @@
 <?php
 
 
+namespace Olympics\Domain\Staff;
+
+use DateTime;
+
 abstract class Staff
 {
     private $id;
@@ -13,30 +17,25 @@ abstract class Staff
 
     /**
      * Staff constructor.
-     * @param int $id
      * @param string $name
      * @param string $lastName
      * @param string $passport
-     * @param DateTime $created
-     * @param DateTime $modified
-     * @param bool $deleted
+     * @throws \Exception
      */
     public function __construct(
-        int $id,
         string $name,
         string $lastName,
-        string $passport,
-        DateTime $created,
-        DateTime $modified,
-        bool $deleted
+        string $passport
     ) {
-        $this->id = $id;
+        $this->id = null;
         $this->name = $name;
         $this->lastName = $lastName;
         $this->passport = $passport;
-        $this->created = $created;
-        $this->modified = $modified;
-        $this->deleted = $deleted;
+        $dateTime = new DateTime();
+        $dateTime->format('Y/m/d H:i:s');
+        $this->created = $dateTime;
+        $this->modified = $dateTime;
+        $this->deleted = false;
     }
 
     /**
@@ -149,5 +148,18 @@ abstract class Staff
     public function setDeleted(bool $deleted): void
     {
         $this->deleted = $deleted;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            $this->id,
+            $this->name,
+            $this->lastName,
+            $this->passport,
+        ];
     }
 }

@@ -1,33 +1,30 @@
 <?php
 
 
+namespace Olympics\Domain\Staff;
+
+use DateTime;
+
 class Journalist extends Staff
 {
     private $companyName;
 
     /**
      * Journalist constructor.
-     * @param int $id
      * @param string $name
      * @param string $lastName
      * @param string $passport
      * @param string $companyName
-     * @param DateTime $created
-     * @param DateTime $modified
-     * @param bool $deleted
+     * @throws \Exception
      */
     public function __construct(
-        int $id,
         string $name,
         string $lastName,
         string $passport,
-        string $companyName,
-        DateTime $created,
-        DateTime $modified,
-        bool $deleted
+        string $companyName
     ) {
         $this->companyName = $companyName;
-        parent::__construct($id, $name, $lastName, $passport, $created, $modified, $deleted);
+        parent::__construct($name, $lastName, $passport);
     }
 
     /**

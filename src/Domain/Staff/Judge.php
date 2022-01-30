@@ -1,33 +1,30 @@
 <?php
 
 
+namespace Olympics\Domain\Staff;
+
+use DateTime;
+
 class Judge extends Staff
 {
     private $judgeId;
 
     /**
      * Judge constructor.
-     * @param int $id
      * @param string $name
      * @param string $lastName
      * @param string $passport
      * @param int $judgeId
-     * @param DateTime $created
-     * @param DateTime $modified
-     * @param bool $deleted
+     * @throws \Exception
      */
     public function __construct(
-        int $id,
         string $name,
         string $lastName,
         string $passport,
-        int $judgeId,
-        DateTime $created,
-        DateTime $modified,
-        bool $deleted
+        int $judgeId
     ) {
         $this->judgeId = $judgeId;
-        parent::__construct($id, $name, $lastName, $passport, $created, $modified, $deleted);
+        parent::__construct($name, $lastName, $passport);
     }
 
     /**

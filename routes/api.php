@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(
     function () {
-        Route::post('/create', ['uses' => 'AdminController@create']);
-        Route::put('/modify', ['uses' => 'AdminController@modify']);
-        Route::delete('/delete', ['uses' => 'AdminController@delete']);
+        Route::post('', ['uses' => 'AdminController@create']);
+        Route::put('', ['uses' => 'AdminController@update']);
+        Route::delete('', ['uses' => 'AdminController@delete']);
     }
 );
