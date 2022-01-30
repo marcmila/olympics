@@ -30,7 +30,7 @@ Route::prefix('judge')->group(
 
 Route::prefix('competitor')->group(
     function () {
-        Route::put('', ['uses' => 'CompetitorController@create']);
+        Route::post('', ['uses' => 'CompetitorController@create']);
     }
 );
 
