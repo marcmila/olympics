@@ -36,7 +36,7 @@ Route::prefix('competitor')->group(
 
 Route::prefix('journalist')->group(
     function () {
-        Route::post('', ['uses' => 'AdminController@create']);
-        Route::put('', ['uses' => 'AdminController@update']);
+        Route::post('', ['uses' => 'JournalistController@create']);
+        Route::put('', ['uses' => 'JournalistController@update']);
     }
 );

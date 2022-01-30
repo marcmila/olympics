@@ -5,17 +5,17 @@ namespace Olympics\Application\Handlers;
 
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Olympics\Application\Commands\JudgeUpdateCommand;
-use Olympics\Domain\Staff\Judge;
+use Olympics\Application\Commands\JournalistUpdateCommand;
+use Olympics\Domain\Staff\Journalist;
 use Olympics\Domain\Staff\Staff;
 use Olympics\Domain\Staff\StaffRepositoryInterface as StaffRepository;
 
-class JudgeUpdateHandler implements HandlerInterface
+class JournalistUpdateHandler implements HandlerInterface
 {
     private $staffRepository;
 
     /**
-     * JudgeUpdateHandler constructor.
+     * JournalistUpdateHandler constructor.
      * @param StaffRepository $staffRepository
      */
     public function __construct(StaffRepository $staffRepository)
@@ -24,14 +24,14 @@ class JudgeUpdateHandler implements HandlerInterface
     }
 
     /**
-     * @param JudgeUpdateCommand $command
+     * @param JournalistUpdateCommand $command
      * @return JsonResponse
      * @throws \Exception
      */
-    public function handle(JudgeUpdateCommand $command): JsonResponse
+    public function handle(JournalistUpdateCommand $command): JsonResponse
     {
         try {
-            $judge = $this->staffRepository->getById($command->getId());
+            $journalist = $this->staffRepository->getById($command->getId());
 
         } catch (Exception $e) {
             return JsonResponse::create(
@@ -44,7 +44,7 @@ class JudgeUpdateHandler implements HandlerInterface
             );
         }
 
-        if (is_null($judge)) {
+        if (is_null($journalist)) {
             return JsonResponse::create(
                 [
                     'status' => 'failed',
@@ -54,20 +54,20 @@ class JudgeUpdateHandler implements HandlerInterface
             );
         }
 
-        if (!$judge instanceof Judge) {
+        if (!$journalist instanceof Journalist) {
             return JsonResponse::create(
                 [
                     'status' => 'failed',
-                    'message' => 'Is not a judge.'
+                    'message' => 'Is not a journalist.'
                 ],
                 404
             );
         }
 
-        $judge = $this->updateJudge($command, $judge);
+        $journalist = $this->updateJournalist($command, $journalist);
 
         try {
-            $this->staffRepository->update($judge);
+            $this->staffRepository->update($journalist);
 
         } catch (Exception $e) {
             return JsonResponse::create(
@@ -80,11 +80,11 @@ class JudgeUpdateHandler implements HandlerInterface
             );
         }
 
-        $message = $judge->getName() . ' updated successfully.';
+        $message = $journalist->getName() . ' updated successfully.';
         return JsonResponse::create(
             [
                 'status' => 'success',
-                'data' => $judge->toArray(),
+                'data' => $journalist->toArray(),
                 'message' => $message
             ],
             200
@@ -92,29 +92,28 @@ class JudgeUpdateHandler implements HandlerInterface
     }
 
     /**
-     * @param JudgeUpdateCommand $command
-     * @param Staff $judge
+     * @param JournalistUpdateCommand $command
+     * @param Staff $journalist
      * @return Staff
-     * @throws Exception
      */
-    public function updateJudge(JudgeUpdateCommand $command, Staff $judge): Staff
+    public function updateJournalist(JournalistUpdateCommand $command, Staff $journalist): Staff
     {
         if (!is_null($command->getName())) {
-            $judge->setName($command->getName());
+            $journalist->setName($command->getName());
         }
 
         if (!is_null($command->getLastName())) {
-            $judge->setLastName($command->getLastName());
+            $journalist->setLastName($command->getLastName());
         }
 
         if (!is_null($command->getPassport())) {
-            $judge->setPassport($command->getPassport());
+            $journalist->setPassport($command->getPassport());
         }
 
-        if (!is_null($command->getJudgeId())) {
-            $judge->setJudgeId($command->getJudgeId());
+        if (!is_null($command->getCompanyName())) {
+            $journalist->setCompanyName($command->getCompanyName());
         }
 
-        return $judge;
+        return $journalist;
     }
 }
