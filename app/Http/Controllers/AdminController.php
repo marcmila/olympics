@@ -60,7 +60,6 @@ class AdminController extends Controller
             $request->input('staff_type'),
             $unsubscribedDate,
             $birthDate,
-            $request->input('result'),
             $request->input('company_name'),
             $request->input('judge_id')
         );

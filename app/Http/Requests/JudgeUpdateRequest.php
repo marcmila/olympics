@@ -4,7 +4,7 @@
 namespace App\Http\Requests;
 
 
-class AdminUpdateRequest extends AbstractFormRequest
+class JudgeUpdateRequest extends AbstractFormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -18,9 +18,6 @@ class AdminUpdateRequest extends AbstractFormRequest
             'name' => 'string|max:255',
             'last_name' => 'string|max:255',
             'passport' => 'string|max:255',
-            'unsubscribed_date' => 'date|date_format:Y-m-d',
-            'birth_date' => 'date|date_format:Y-m-d',
-            'company_name' => 'string|max:255',
             'judge_id' => 'numeric',
         ];
     }

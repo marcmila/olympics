@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Olympics\Domain\Result\ResultRepositoryInterface;
 use Olympics\Domain\Staff\StaffRepositoryInterface;
-use Olympics\Infrastructure\Repositories\StaffRepository;
+use Olympics\Infrastructure\Repositories\{ResultRepository, StaffRepository};
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             StaffRepositoryInterface::class,
             StaffRepository::class
+        );
+
+        $this->app->bind(
+            ResultRepositoryInterface::class,
+            ResultRepository::class
         );
     }
 

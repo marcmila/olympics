@@ -81,8 +81,7 @@ class AdminCreateHandler implements HandlerInterface
                     $command->getName(),
                     $command->getLastName(),
                     $command->getPassport(),
-                    $command->getBirthDate(),
-                    $command->getResult()
+                    $command->getBirthDate()
                 );
                 break;
 

@@ -1,0 +1,29 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Olympics\Domain\Result\Result" table="result">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+            <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1"/>
+        </id>
+
+        <many-to-one field="competitor" target-entity="Olympics\Domain\Staff\Competitor">
+            <join-column name="competitor_id" referenced-column-name="id"/>
+        </many-to-one>
+
+        <field name="modality" column="modality" type="string" nullable="false" length="255"/>
+
+        <field name="position" column="position" type="integer" nullable="false"/>
+
+        <field name="created" column="created" type="datetime" nullable="false"/>
+
+        <field name="modified" column="modified" type="datetime" nullable="false"/>
+
+        <field name="deleted" column="deleted" type="boolean" nullable="false"/>
+
+    </entity>
+
+</doctrine-mapping>

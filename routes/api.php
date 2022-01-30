@@ -20,3 +20,23 @@ Route::prefix('admin')->group(
         Route::delete('', ['uses' => 'AdminController@delete']);
     }
 );
+
+Route::prefix('judge')->group(
+    function () {
+        Route::put('', ['uses' => 'JudgeController@update']);
+        Route::post('/add/result', ['uses' => 'JudgeController@addResult']);
+    }
+);
+
+Route::prefix('competitor')->group(
+    function () {
+        Route::put('', ['uses' => 'CompetitorController@create']);
+    }
+);
+
+Route::prefix('journalist')->group(
+    function () {
+        Route::post('', ['uses' => 'AdminController@create']);
+        Route::put('', ['uses' => 'AdminController@update']);
+    }
+);

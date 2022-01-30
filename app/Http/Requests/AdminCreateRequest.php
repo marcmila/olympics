@@ -26,7 +26,6 @@ class AdminCreateRequest extends AbstractFormRequest
             ],
             'unsubscribed_date' => 'date|date_format:Y-m-d|required_if:staff_type,==,admin',
             'birth_date' => 'date|date_format:Y-m-d|required_if:staff_type,==,competitor',
-            'result' => 'string|max:255|required_if:staff_type,==,competitor',
             'company_name' => 'string|max:255|required_if:staff_type,==,journalist',
             'judge_id' => 'numeric|required_if:staff_type,==,judge',
         ];

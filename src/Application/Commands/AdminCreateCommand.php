@@ -14,7 +14,6 @@ class AdminCreateCommand implements CommandInterface
     private $staffType;
     private $unsubscribedDate;
     private $birthDate;
-    private $result;
     private $companyName;
     private $judgeId;
 
@@ -26,7 +25,6 @@ class AdminCreateCommand implements CommandInterface
      * @param string $staffType
      * @param DateTime|null $unsubscribedDate
      * @param DateTime|null $birthDate
-     * @param string|null $result
      * @param string|null $companyName
      * @param int|null $judgeId
      */
@@ -37,7 +35,6 @@ class AdminCreateCommand implements CommandInterface
         string $staffType,
         ?DateTime $unsubscribedDate,
         ?DateTime $birthDate,
-        ?string $result,
         ?string $companyName,
         ?int $judgeId
     ) {
@@ -47,7 +44,6 @@ class AdminCreateCommand implements CommandInterface
         $this->staffType = $staffType;
         $this->unsubscribedDate = $unsubscribedDate;
         $this->birthDate = $birthDate;
-        $this->result = $result;
         $this->companyName = $companyName;
         $this->judgeId = $judgeId;
     }
@@ -146,22 +142,6 @@ class AdminCreateCommand implements CommandInterface
     public function setBirthDate(?DateTime $birthDate): void
     {
         $this->birthDate = $birthDate;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getResult(): ?string
-    {
-        return $this->result;
-    }
-
-    /**
-     * @param string|null $result
-     */
-    public function setResult(?string $result): void
-    {
-        $this->result = $result;
     }
 
     /**

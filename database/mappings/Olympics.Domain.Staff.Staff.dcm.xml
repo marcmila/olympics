@@ -14,7 +14,7 @@
 
         <field name="lastName" column="last_name" type="string" nullable="false" length="255"/>
 
-        <field name="passport" column="passport" type="string" nullable="false" length="255"/>
+        <field name="passport" column="passport" type="string" nullable="false" length="255" unique="true"/>
 
         <field name="created" column="created" type="datetime" nullable="false"/>
 

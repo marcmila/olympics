@@ -4,11 +4,12 @@
 namespace Olympics\Domain\Staff;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Competitor extends Staff
 {
     private $birthDate;
-    private $result;
+    private $results;
 
     /**
      * Competitor constructor.
@@ -16,18 +17,16 @@ class Competitor extends Staff
      * @param string $lastName
      * @param string $passport
      * @param DateTime $birthDate
-     * @param string $result
      * @throws \Exception
      */
     public function __construct(
         string $name,
         string $lastName,
         string $passport,
-        DateTime $birthDate,
-        string $result
+        DateTime $birthDate
     ) {
         $this->birthDate = $birthDate;
-        $this->result = $result;
+        $this->results = new ArrayCollection();
         parent::__construct($name, $lastName, $passport);
     }
 
@@ -48,18 +47,18 @@ class Competitor extends Staff
     }
 
     /**
-     * @return string
+     * @return ArrayCollection
      */
-    public function getResult(): string
+    public function getResults(): ArrayCollection
     {
-        return $this->result;
+        return $this->results;
     }
 
     /**
-     * @param string $result
+     * @param ArrayCollection $results
      */
-    public function setResult(string $result): void
+    public function setResults(ArrayCollection $results): void
     {
-        $this->result = $result;
+        $this->results = $results;
     }
 }
